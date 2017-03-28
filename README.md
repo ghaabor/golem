@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ghaabor/golem.svg?branch=master)](https://travis-ci.org/ghaabor/golem)
 [![Coverage Status](https://coveralls.io/repos/github/ghaabor/golem/badge.svg?branch=master)](https://coveralls.io/github/ghaabor/golem?branch=master)
+[![Hex.pm](https://img.shields.io/hexpm/v/golem.svg)](https://hex.pm/packages/golem)
 
 **TODO: Add description**
 

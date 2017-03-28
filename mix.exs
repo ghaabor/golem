@@ -4,7 +4,7 @@ defmodule Golem.Mixfile do
   def project do
     [
       app: :golem,
-      version: "0.0.1.alpha1",
+      version: "0.0.1-alpha1",
       elixir: "~> 1.4",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
@@ -42,7 +42,8 @@ defmodule Golem.Mixfile do
 
   defp description do
     """
-    Chatbot built in Elixir. BETA.
+    --- ALPHA ---
+    Chatbot built in Elixir.
     """
   end
 
@@ -60,7 +61,6 @@ defmodule Golem.Mixfile do
   defp docs do
     [
       main: "Golem",
-      logo: "",
       extras: ["README.md"]
     ]
   end
