@@ -6,6 +6,10 @@
 
 **TODO: Add description**
 
+## Example
+
+[https://github.com/ghaabor/golem-example](https://github.com/ghaabor/golem-example)
+
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
