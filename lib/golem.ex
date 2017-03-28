@@ -1,4 +1,9 @@
 defmodule Golem do
+  @moduledoc """
+  The entry point for the Golem.
+  """
+  alias Golem.CommandRegistry
+  alias Golem.ExampleCommands
   use Application
 
   defmacro __using__ do
@@ -9,10 +14,10 @@ defmodule Golem do
   end
 
   def start(_type, _args) do
-    {:ok, _registrty_pid} = Golem.CommandRegistry.start_link
+    {:ok, _registrty_pid} = CommandRegistry.start_link
 
-    Golem.ExampleCommands.Test.init
-    
+    ExampleCommands.Test.init
+
     {:ok, _pid} = Application.fetch_env!(:golem, :adapter).connect()
   end
 end

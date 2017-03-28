@@ -46,9 +46,10 @@ defmodule Golem.CommandRegistry do
 
   defp match(_, []), do: nil
   defp match(message, [head|tail]) do
-    cond do
-      String.match?(message, head.regex) -> head
-      true -> match(message, tail)
+    if String.match?(message, head.regex) do
+      head
+    else
+      match(message, tail)
     end
   end
 end

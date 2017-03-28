@@ -1,4 +1,7 @@
 defmodule Golem.ExampleCommands.Test do
+  @moduledoc """
+  Example commands.
+  """
   use Golem.Command
 
   def init do

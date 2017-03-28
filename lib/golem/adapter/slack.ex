@@ -1,4 +1,7 @@
 defmodule Golem.Adapter.Slack do
+  @moduledoc """
+  Slack adapter.
+  """
   @behaviour Golem.Adapter
 
   alias Golem.Adapter.Slack
@@ -8,10 +11,11 @@ defmodule Golem.Adapter.Slack do
   use Tesla, docs: false
   plug Tesla.Middleware.BaseUrl, "https://slack.com/api"
   plug Tesla.Middleware.JSON
-  plug Tesla.Middleware.Query, [token: Application.fetch_env!(:golem, :slack_token)]
+  plug Tesla.Middleware.Query,
+    [token: Application.fetch_env!(:golem, :slack_token)]
 
   def connect do
-    ws_uri = 
+    ws_uri =
       case rtm_start() do
         {:ok, ws_url} -> URI.parse(ws_url)
         {:error, reason} ->
@@ -21,7 +25,7 @@ defmodule Golem.Adapter.Slack do
       end
 
     socket = Socket.Web.connect! ws_uri.host, secure: true, path: ws_uri.path
-    {resp_type, resp} = socket |> Socket.Web.recv! 
+    {resp_type, resp} = socket |> Socket.Web.recv!
     mesg = resp |> parse_response
     case mesg[:type] do
       "hello" ->
@@ -29,7 +33,7 @@ defmodule Golem.Adapter.Slack do
         case start_slack_supervisor(socket) do
           {:ok, pid} -> {:ok, pid}
           {:error, reason} -> {:error, reason}
-        end        
+        end
       "error" ->
         mesg[:error][:msg] |> Logger.error
         {:error, mesg[:error][:msg]}

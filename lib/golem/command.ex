@@ -1,4 +1,7 @@
 defmodule Golem.Command do
+  @moduledoc """
+  Abstract command module to use in actual commands.
+  """
   alias Golem.Command
   alias Golem.CommandRegistry
 
@@ -9,7 +12,7 @@ defmodule Golem.Command do
   end
 
   @enforce_keys [:regex, :function]
-  defstruct [:regex, :function] 
+  defstruct [:regex, :function]
 
   def command(regex, function) do
     c = %Command{regex: regex, function: function}

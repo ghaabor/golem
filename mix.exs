@@ -10,6 +10,8 @@ defmodule Golem.Mixfile do
       start_permanent: Mix.env == :prod,
       deps: deps(),
 
+      test_coverage: [tool: Coverex.Task],
+
       # Docs
       name: "Golem",
       source_url: "https://github.com/ghaabor/golem",
@@ -33,8 +35,10 @@ defmodule Golem.Mixfile do
     [
       {:tesla, "~> 0.6.0"},
       {:socket, "~> 0.3"},
-      {:poison, ">= 1.0.0"},
-      {:ex_doc, "~> 0.14", only: :dev, runtime: false}
+      {:poison, "~> 2.0"},
+      {:ex_doc, "~> 0.14", only: :dev, runtime: false},
+      {:credo, "~> 0.7", only: [:dev, :test]},
+      {:coverex, "~> 1.4.10", only: :test}
     ]
   end
 end
