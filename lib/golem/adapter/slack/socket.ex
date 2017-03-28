@@ -66,7 +66,7 @@ defmodule Golem.Adapter.Slack.Socket do
       "error" ->
         Logger.error("#{msg["error"]["msg"]} (#{msg["error"]["code"]})")
       _ ->
-        Logger.info("Unhandled message: [#{msg["type"] || "nil"}] #{msg}")
+        Logger.info("Unhandled message: [#{msg["type"] || "nil"}] #{Poison.encode!(msg)}")
     end
 
     socket

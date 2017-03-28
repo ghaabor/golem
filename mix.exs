@@ -4,7 +4,7 @@ defmodule Golem.Mixfile do
   def project do
     [
       app: :golem,
-      version: "0.0.1-alpha2",
+      version: "0.0.1-alpha3",
       elixir: "~> 1.4",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
