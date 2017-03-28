@@ -4,7 +4,7 @@ defmodule Golem.Mixfile do
   def project do
     [
       app: :golem,
-      version: "0.0.1-alpha1",
+      version: "0.0.1-alpha2",
       elixir: "~> 1.4",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
@@ -23,10 +23,7 @@ defmodule Golem.Mixfile do
   end
 
   def application do
-    [
-      mod: {Golem, []},
-      extra_applications: [:logger]
-    ]
+    [extra_applications: [:logger]]
   end
 
   defp deps do
@@ -36,7 +33,8 @@ defmodule Golem.Mixfile do
       {:poison, "~> 2.0"},
       {:ex_doc, "~> 0.14", only: :dev, runtime: false},
       {:credo, "~> 0.7", only: [:dev, :test]},
-      {:coverex, "~> 1.4.10", only: :test}
+      {:coverex, "~> 1.4.10", only: :test},
+      {:git_cli, "~> 0.2", only: :dev}
     ]
   end
 

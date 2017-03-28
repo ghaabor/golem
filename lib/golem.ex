@@ -3,21 +3,25 @@ defmodule Golem do
   The entry point for the Golem.
   """
   alias Golem.CommandRegistry
-  alias Golem.ExampleCommands
-  use Application
+
+  require Logger
 
   defmacro __using__ do
     quote do
-      import Golem
-      unquote(Application.fetch_env!(:golem, :adapter)).connect()
+      require Golem
     end
   end
 
-  def start(_type, _args) do
+  def start(commands) do
     {:ok, _registrty_pid} = CommandRegistry.start_link
 
-    ExampleCommands.Test.init
+    # Init all the commands the user specified.
+    commands |> Enum.each(&init_commands/1)
 
-    {:ok, _pid} = Application.fetch_env!(:golem, :adapter).connect()
+    {:ok, _pid} = :erlang.apply(Application.fetch_env!(:golem, :adapter), :connect, [])
+  end
+
+  defp init_commands(command) do
+    :erlang.apply(command, :init, [])
   end
 end

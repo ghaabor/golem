@@ -48,10 +48,23 @@ defmodule Golem.Adapter.Slack do
     response = get("/rtm.start")
     if response.status == 200 do
       :ets.new(:config, [:named_table, :public])
+
       :ets.new(:users, [:named_table])
       for user <- response.body["users"] do
         :ets.insert(:users, {user["id"], user})
       end
+
+      :ets.new(:channels, [:named_table])
+      for channel <- response.body["channels"] do
+        :ets.insert(:channels, {channel["id"], channel})
+      end
+      for group <- response.body["groups"] do
+        :ets.insert(:channels, {group["id"], group})
+      end
+      for im <- response.body["ims"] do
+        :ets.insert(:channels, {im["id"], im})
+      end
+
       {:ok, response.body["url"]}
     else
       {:error, [status: response.status, body: response.body]}
