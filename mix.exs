@@ -10,7 +10,7 @@ defmodule Golem.Mixfile do
       start_permanent: Mix.env == :prod,
       deps: deps(),
 
-      test_coverage: [tool: Coverex.Task],
+      test_coverage: [tool: Coverex.Task, coveralls: true],
 
       # Docs
       name: "Golem",

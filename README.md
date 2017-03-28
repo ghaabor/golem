@@ -1,5 +1,8 @@
 # Golem
 
+[![Build Status](https://travis-ci.org/ghaabor/golem.svg?branch=master)](https://travis-ci.org/ghaabor/golem)
+[![Coverage Status](https://coveralls.io/repos/github/ghaabor/golem/badge.svg?branch=master)](https://coveralls.io/github/ghaabor/golem?branch=master)
+
 **TODO: Add description**
 
 ## Installation
